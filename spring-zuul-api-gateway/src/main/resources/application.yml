@@ -1,0 +1,32 @@
+
+spring:
+  application:
+    name: ZuulAPIGateway
+
+server:
+  port: 8091
+  
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  
+zuul:
+  routes:
+    ZuulAPI1:
+      path: /zuulapi1/**
+      #url:  http://localhost:8082/
+      service-id: SpringZuulRoute1
+             
+    ZuulAPI2:
+      path: /zuulapi2/**
+      #url:  http://localhost:8083/
+      service-id: SpringZuulRoute2
+  host:
+    max-total-connections: 100
+    max-per-route-connections: 100
+    socket-timeout-millis: 60000
+  sensitive-headers:
+
+
+
